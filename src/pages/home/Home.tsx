@@ -2,17 +2,8 @@ import React from 'react';
 import { CheckCircleOutlined, ClockCircleOutlined, ExclamationCircleOutlined, 
   DollarCircleOutlined, FileTextOutlined, PlusOutlined, 
   FileAddOutlined, BarChartOutlined, GlobalOutlined } from '@ant-design/icons';
-  import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    ResponsiveContainer,
-    BarChart as RechartsBarChart,
-    Bar
+  import { LineChart, Line, XAxis, YAxis, CartesianGrid,
+  Tooltip, Legend, ResponsiveContainer, BarChart as RechartsBarChart, Bar
   } from 'recharts';
 
 const Home: React.FC = () => {
