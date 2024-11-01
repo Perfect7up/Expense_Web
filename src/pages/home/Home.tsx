@@ -124,7 +124,7 @@ const Home: React.FC = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        
+
         <div className='bg-gray-700 mt-5' style={{ background:'#1b1c1c' }}>
           <h2 className='text-lg font-semibold mb-4 text-white'>Day-to-Day Expenses</h2>
           <ResponsiveContainer width='100%' height={300}>
