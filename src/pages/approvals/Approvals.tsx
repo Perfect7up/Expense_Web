@@ -114,7 +114,7 @@ const Expense: React.FC = () => {
                                 </td>
                             </tr>
                             <br />
-                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#141414'}}>
+                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#282829'}}>
                                 <th scope="row" className="flex items-center px-6 py-7 font-medium whitespace-nowrap">
                                 <FaUser className="inline-block mr-3" /> Jim Micheal                                </th>
                                 <td className="px-6 py-4">
