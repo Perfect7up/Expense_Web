@@ -1,7 +1,6 @@
 import React from 'react';
 import { FilterFilled, MenuOutlined, EllipsisOutlined, PlusOutlined,  } from '@ant-design/icons';
-import { FaMoneyBillWave, FaStore, FaCalendarAlt, FaCheckCircle,
-     FaInfoCircle,FaPlane } from 'react-icons/fa';
+import { FaMoneyBillWave, FaStore, FaCalendarAlt, FaCheckCircle, FaInfoCircle,FaPlane } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Expense: React.FC = () => {
