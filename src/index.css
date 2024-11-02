@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f8fa;
+  --hover-primary: #333333;
+  --hover-secondary: #444444;
+  --text-primary: #000000;
+  --text-secondary: #5a5a5a;
+}
 
-body {
-  background-color: #1b1c1c;
-  color: white;
+.dark {
+  --bg-primary: #1b1c1c;
+  --bg-secondary: #282829;
+  --hover-primary: #e0e0e0;
+  --hover-secondary: #d9d9d9;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
 }

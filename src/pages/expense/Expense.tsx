@@ -1,178 +1,199 @@
+// Expense.tsx
 import React from 'react';
-import { FilterFilled, MenuOutlined, EllipsisOutlined, PlusOutlined,  } from '@ant-design/icons';
-import { FaMoneyBillWave, FaStore, FaCalendarAlt, FaCheckCircle,  FaUtensils, 
-    FaShoppingCart, FaInfoCircle, FaNewspaper, FaPlane, FaGlassCheers, FaHotel } from 'react-icons/fa';
+import { Table, Tag } from 'antd';
+import { PlusOutlined, FilterFilled, MenuOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import {
+  FaMoneyBillWave,
+  FaStore,
+  FaCalendarAlt,
+  FaCheckCircle,
+  FaUtensils,
+  FaShoppingCart,
+  FaInfoCircle,
+  FaNewspaper,
+  FaPlane,
+  FaGlassCheers,
+  FaHotel
+} from 'react-icons/fa';
+
+interface ExpenseData {
+  key: string;
+  details: JSX.Element;
+  merchant: string;
+  amount: string;
+  reportDate: string;
+  status: string;
+}
 
 const Expense: React.FC = () => {
-    return (
-        <div className="py-5 px-10">
-            <div className="flex-grow ml-64 py-5 rounded-2xl bg-black px-10">
-                <div className="flex mb-5 justify-between ">
-                    <h2 className="font-semibold mt-5 text-2xl text-white">Expense</h2>
-                <div className="flex mt-5 items-center">
-                <Link to="/expense/newexpense" className="bg-cyan-400 rounded-sm m-2 items-center py-1 px-3 text-sm">
-                 <PlusOutlined className="text-sm m-1" />
-                New Expense</Link>
-                <FilterFilled className="text-cyan-400 mr-4" />
-                <MenuOutlined className="text-cyan-400  mr-4" />
-                <EllipsisOutlined className="text-cyan-400 mr-4" />
-                </div>         
-                </div>
-                <hr className='text-black' />
-                <div className="mt-5">
-                    <table className="w-full text-sm text-left">
-                    <thead className="font-semibold text-gray-400 uppercase bg-black">
-                            <tr className='rounded-xl'>
-                                <th scope="col" className="px-6 py-3"> 
-                                    <FaInfoCircle className="inline-block mr-1 -mt-1" /> Details 
-                                </th>
-                                <th scope="col" className="px-6 py-3"> 
-                                    <FaStore className="inline-block mr-1 -mt-1" /> Merchant 
-                                </th>
-                                <th scope="col" className="px-6 py-3"> 
-                                    <FaMoneyBillWave className="inline-block mr-1 -mt-1" /> Amount 
-                                </th>
-                                <th scope="col" className="px-6 py-3"> 
-                                    <FaCalendarAlt className="inline-block mr-1 -mt-1" /> Report Date 
-                                </th>
-                                <th scope="col" className="px-6 py-3"> 
-                                    <FaCheckCircle className="inline-block mr-1 -mt-1" /> Status 
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#282829'}}>
-                                <th scope="row" className="flex items-center px-6 py-7 font-medium whitespace-nowrap">
-                                <FaUtensils className="inline-block mr-3" /> Food Catering
-                                </th>
-                                <td className="px-6 py-4">
-                                    McFood
-                                </td>
-                                <td className="px-6 py-4">
-                                    €250.00
-                                </td>
-                                <td className="px-6 py-4">
-                                    20/07/2022
-                                </td>
-                                <td>
-                                   <span className='px-3 py-2 rounded-full text-sm' style={{ backgroundColor: '#73172f'}} >Not Submitted</span> 
-                                </td>
-                            </tr>
-                            <br />
-                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#141414'}}>
-                                <th scope="row" className="flex items-center px-6 py-7 font-medium whitespace-nowrap">
-                                <FaShoppingCart className="inline-block mr-3" />  Shopping
-                                </th>
-                                <td className="px-6 py-4">
-                                    Mart
-                                </td>
-                                <td className="px-6 py-4">
-                                    €150.00
-                                </td>
-                                <td className="px-6 py-4">
-                                    4/07/2022
-                                </td>
-                                <td>
-                                   <span className='px-3 py-2 rounded-full text-sm' style={{ backgroundColor: '#73172f'}} >Not Submitted</span> 
-                                </td>
-                            </tr>
-                            <br />
-                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#282829'}}>
-                                <th scope="row" className="flex items-center px-6 py-7 font-medium whitespace-nowrap">
-                                <FaUtensils className="inline-block mr-3" /> Business Lunch
-                                </th>
-                                <td className="px-6 py-4">
-                                    Restaurant
-                                </td>
-                                <td className="px-6 py-4">
-                                    €70.00
-                                </td>
-                                <td className="px-6 py-4">
-                                    3/07/2022
-                                </td>
-                                <td>
-                                   <span className='px-3 py-2 rounded-full text-sm' style={{ backgroundColor: '#73172f'}} >Not Submitted</span> 
-                                </td>
-                            </tr>
-                            <br />
-                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#141414'}}>
-                                <th scope="row" className="flex items-center px-6 py-7 font-medium whitespace-nowrap">
-                                <FaPlane className="inline-block mr-3" /> Travel Expense
-                                </th>
-                                <td className="px-6 py-4">
-                                    Airlines
-                                </td>
-                                <td className="px-6 py-4">
-                                    €450.25
-                                </td>
-                                <td className="px-6 py-4">
-                                    29/06/2022
-                                </td>
-                                <td>
-                                   <span className='px-7 py-2 rounded-full text-sm' style={{ backgroundColor: '#2e1066'}} >Submitted</span> 
-                                </td>
-                            </tr>
-                            <br />
-                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#282829'}}>
-                                <th scope="row" className="flex items-center px-6 py-7 font-medium whitespace-nowrap">
-                                <FaGlassCheers className="inline-block mr-3" /> Client Dinner
-                                </th>
-                                <td className="px-6 py-4">
-                                    Bistro
-                                </td>
-                                <td className="px-6 py-4">
-                                    €120.00
-                                </td>
-                                <td className="px-6 py-4">
-                                    15/06/2022
-                                </td>
-                                <td>
-                                    <span className='px-3 py-2 rounded-full text-sm' style={{ backgroundColor: '#73172f'}} >Not Submitted</span>  
-                                </td>
-                            </tr>
-                            <br />
-                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#141414'}}>
-                                <th scope="row" className="flex items-center px-6 py-7 font-medium whitespace-nowrap">
-                                <FaHotel className="inline-block mr-3" /> Accommodations
-                                </th>
-                                <td className="px-6 py-4">
-                                    Hotel
-                                </td>
-                                <td className="px-6 py-4">
-                                    €275.75
-                                </td>
-                                <td className="px-6 py-4">
-                                    30/05/2022
-                                </td>
-                                <td>
-                                    <span className='px-7 py-2 rounded-full text-sm' style={{ backgroundColor: '#2e1066'}} >Submitted</span> 
-                                </td>
-                            </tr>
-                            <br />
-                            <tr className='mb-5 text-white font-semibold' style={{backgroundColor: '#282829'}}>
-                                <th scope="row" className="flex items-center px-6 py-7 font-medium whitespace-nowrap">
-                                <FaNewspaper className="inline-block mr-3" /> News Subscription
-                                </th>
-                                <td className="px-6 py-4">
-                                    NewsTimes
-                                </td>
-                                <td className="px-6 py-4">
-                                    €275.75
-                                </td>
-                                <td className="px-6 py-4">
-                                    30/05/2022
-                                </td>
-                                <td>
-                                    <span className='px-3 py-2 rounded-full text-sm' style={{ backgroundColor: '#73172f'}} >Not Submitted</span>
-                                </td>
-                            </tr>
-                          </tbody>
-                    </table>
-                </div>
-            </div>
+  // Table columns definition
+  const columns = [
+    {
+      title: (
+        <>
+          <FaInfoCircle className="inline-block mr-1" /> Details
+        </>
+      ),
+      dataIndex: 'details',
+      key: 'details'
+    },
+    {
+      title: (
+        <>
+          <FaStore className="inline-block mr-1" /> Merchant
+        </>
+      ),
+      dataIndex: 'merchant',
+      key: 'merchant'
+    },
+    {
+      title: (
+        <>
+          <FaMoneyBillWave className="inline-block mr-1" /> Amount
+        </>
+      ),
+      dataIndex: 'amount',
+      key: 'amount'
+    },
+    {
+      title: (
+        <>
+          <FaCalendarAlt className="inline-block mr-1" /> Report Date
+        </>
+      ),
+      dataIndex: 'reportDate',
+      key: 'reportDate'
+    },
+    {
+      title: (
+        <>
+          <FaCheckCircle className="inline-block mr-1" /> Status
+        </>
+      ),
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: string) => (
+        <Tag color={status === 'Submitted' ? 'blue' : 'volcano'}>{status}</Tag>
+      )
+    }
+  ];
+
+  // Table data definition
+  const data: ExpenseData[] = [
+    {
+      key: '1',
+      details: (
+        <>
+          <FaUtensils className="mr-2" /> Food Catering
+        </>
+      ),
+      merchant: 'McFood',
+      amount: '€250.00',
+      reportDate: '20/07/2022',
+      status: 'Not Submitted'
+    },
+    {
+      key: '2',
+      details: (
+        <>
+          <FaShoppingCart className="mr-2" /> Shopping
+        </>
+      ),
+      merchant: 'Mart',
+      amount: '€150.00',
+      reportDate: '4/07/2022',
+      status: 'Not Submitted'
+    },
+    {
+      key: '3',
+      details: (
+        <>
+          <FaUtensils className="mr-2" /> Business Lunch
+        </>
+      ),
+      merchant: 'Restaurant',
+      amount: '€70.00',
+      reportDate: '3/07/2022',
+      status: 'Not Submitted'
+    },
+    {
+      key: '4',
+      details: (
+        <>
+          <FaPlane className="mr-2" /> Travel Expense
+        </>
+      ),
+      merchant: 'Airlines',
+      amount: '€450.25',
+      reportDate: '29/06/2022',
+      status: 'Submitted'
+    },
+    {
+      key: '5',
+      details: (
+        <>
+          <FaGlassCheers className="mr-2" /> Client Dinner
+        </>
+      ),
+      merchant: 'Bistro',
+      amount: '€120.00',
+      reportDate: '15/06/2022',
+      status: 'Not Submitted'
+    },
+    {
+      key: '6',
+      details: (
+        <>
+          <FaHotel className="mr-2" /> Accommodations
+        </>
+      ),
+      merchant: 'Hotel',
+      amount: '€275.75',
+      reportDate: '30/05/2022',
+      status: 'Submitted'
+    },
+    {
+      key: '7',
+      details: (
+        <>
+          <FaNewspaper className="mr-2" /> News Subscription
+        </>
+      ),
+      merchant: 'NewsTimes',
+      amount: '€275.75',
+      reportDate: '30/05/2022',
+      status: 'Not Submitted'
+    }
+  ];
+
+  return (
+    <div className="bg-primary text-textPrimary">
+      <div className="flex-grow ml-5 mr-5 px-5 py-5 rounded-2xl bg-secondary">
+        <div className="flex mb-5 justify-between">
+          <h2 className="font-semibold mt-5 text-2xl">Expense</h2>
+          <div className="flex mt-5 items-center">
+            <Link
+              to="/expense/newexpense"
+              className="bg-cyan-400 rounded-sm m-2 items-center py-1 px-3 text-sm text-white"
+            >
+              <PlusOutlined className="text-sm m-1" />
+              New Expense
+            </Link>
+            <FilterFilled className="text-cyan-400 mr-4" />
+            <MenuOutlined className="text-cyan-400 mr-4" />
+            <EllipsisOutlined className="text-cyan-400 mr-4" />
+          </div>
         </div>
-    );
+        <hr className="text-black" />
+
+        {/* Expense Table */}
+        <div className="mt-5">
+          <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Expense;
