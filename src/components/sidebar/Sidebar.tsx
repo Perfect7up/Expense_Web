@@ -28,14 +28,14 @@ const Sidebar: React.FC = () => {
             </Link>
           </li>
           <li className="mb-4">
-            <Link to="/settings" className="hover:bg-gray-700 p-2 rounded-xl hover:text-cyan-400 block flex items-center">
+            <a href="#" className="hover:bg-gray-700 p-2 rounded-xl hover:text-cyan-400 block flex items-center">
               <SettingOutlined className="mr-2" /> Settings
-            </Link>
+            </a>
           </li>
           <li className="mb-4">
-            <Link to="/support" className="hover:bg-gray-700 p-2 rounded-xl hover:text-cyan-400 block flex items-center">
+            <a href="#" className="hover:bg-gray-700 p-2 rounded-xl hover:text-cyan-400 block flex items-center">
               <PhoneFilled className="mr-2" /> Support
-            </Link>
+            </a>
           </li>
         </ul>
       </div>

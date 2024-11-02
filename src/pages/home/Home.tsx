@@ -5,6 +5,7 @@ import { CheckCircleOutlined, ClockCircleOutlined, ExclamationCircleOutlined,
   import { LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer, BarChart as RechartsBarChart, Bar
   } from 'recharts';
+  import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const tasks = [
@@ -88,10 +89,10 @@ const Home: React.FC = () => {
           <h2 className="text-lg font-semibold mb-2 text-white">Quick Access</h2>
           <hr className='bg-gray-700'/>
           <div className="flex flex-wrap ml-8 gap-12 mt-4">
-            <button className="flex items-center rounded-lg font-bold py-4 px-4" style={{background:'#3f3f40' }}>
+            <Link to='/expense/newexpense' className="flex items-center rounded-lg font-bold py-4 px-4" style={{background:'#3f3f40' }}>
               <PlusOutlined className="mr-2 px-2 py-2 rounded-full bg-purple-700 text-purple-950" />
               New Expense
-            </button>
+            </Link>
             <button className="flex items-center rounded-lg font-bold py-4 px-4" style={{background:'#3f3f40' }}>
               <FileAddOutlined className="mr-2 py-2 px-2 rounded-full bg-blue-700 text-blue-950" />
               New Receipt
@@ -100,10 +101,10 @@ const Home: React.FC = () => {
               <BarChartOutlined className="mr-2 py-2 px-2 rounded-full bg-red-500 text-red-950" />
               Create Report
             </button>
-            <button className="flex items-center rounded-lg font-bold py-4 px-4" style={{background:'#3f3f40' }}>
+            <Link to='/trips/newtrip' className="flex items-center rounded-lg font-bold py-4 px-4" style={{background:'#3f3f40' }}>
               <GlobalOutlined className="mr-2 py-2 px-2 rounded-full bg-green-800 text-green-950" />
               Create Trip
-            </button>
+            </Link>
           </div>
         </div>
         <div className="bg-gray-700 rounded-2xl p-4 mb-6 mt-6" style={{backgroundColor:'#1b1c1c'}}>
