@@ -1,7 +1,8 @@
 import React from 'react';
 import { FilterFilled, MenuOutlined, EllipsisOutlined, PlusOutlined,  } from '@ant-design/icons';
 import { FaMoneyBillWave, FaStore, FaCalendarAlt, FaCheckCircle,  FaUtensils, 
-    FaShoppingCart, FaNewspaper, FaPlane, FaGlassCheers, FaHotel } from 'react-icons/fa';
+    FaShoppingCart, FaInfoCircle, FaNewspaper, FaPlane, FaGlassCheers, FaHotel } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Expense: React.FC = () => {
     return (
@@ -10,9 +11,9 @@ const Expense: React.FC = () => {
                 <div className="flex mb-5 justify-between ">
                     <h2 className="font-semibold mt-5 text-2xl text-white">Expense</h2>
                 <div className="flex mt-5 items-center">
-                <a href="#" className="bg-cyan-400 rounded-sm m-2 items-center py-1 px-3 text-sm">
-                <PlusOutlined className="text-sm m-1" />
-                New Expense</a>
+                <Link to="/expense/newexpense" className="bg-cyan-400 rounded-sm m-2 items-center py-1 px-3 text-sm">
+                 <PlusOutlined className="text-sm m-1" />
+                New Expense</Link>
                 <FilterFilled className="text-cyan-400 mr-4" />
                 <MenuOutlined className="text-cyan-400  mr-4" />
                 <EllipsisOutlined className="text-cyan-400 mr-4" />
@@ -24,7 +25,7 @@ const Expense: React.FC = () => {
                     <thead className="font-semibold text-gray-400 uppercase bg-black">
                             <tr className='rounded-xl'>
                                 <th scope="col" className="px-6 py-3"> 
-                                    <FaStore className="inline-block mr-1 -mt-1" /> Details 
+                                    <FaInfoCircle className="inline-block mr-1 -mt-1" /> Details 
                                 </th>
                                 <th scope="col" className="px-6 py-3"> 
                                     <FaStore className="inline-block mr-1 -mt-1" /> Merchant 
@@ -154,7 +155,7 @@ const Expense: React.FC = () => {
                                 <FaNewspaper className="inline-block mr-3" /> News Subscription
                                 </th>
                                 <td className="px-6 py-4">
-                                    Hotel
+                                    NewsTimes
                                 </td>
                                 <td className="px-6 py-4">
                                     €275.75
