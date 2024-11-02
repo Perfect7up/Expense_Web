@@ -8,6 +8,7 @@ import Approvals from './pages/approvals/Approvals';
 import Settings from './pages/settings/Settings';
 import Support from './pages/support/Support';
 import NewExpense from './pages/expense/component/NewExpense';
+import Newtrip from './pages/trips/component/Newtrip';
 
 
 
@@ -25,6 +26,7 @@ const App: React.FC = () => {
               <Route path='/settings' element={<Settings />} />
               <Route path='/support' element={<Support />} />
               <Route path='/expense/newexpense' element={<NewExpense />} />
+              <Route path='/trips/newtrip' element={<Newtrip />} />
             </Routes>
           </div>
         </div>
