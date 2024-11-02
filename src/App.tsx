@@ -9,6 +9,7 @@ import Settings from './pages/settings/Settings';
 import Support from './pages/support/Support';
 
 
+
 const App: React.FC = () => {
   return (
     <Router>
