@@ -1,9 +1,11 @@
+// index.ts
 import axios from 'axios';
 import { store } from '../store/store';
 import { removeLocalData } from '../utils/storage';
 
 const api = axios.create({
-  baseURL: import.meta.env.API_URL
+  // The issue is here - you're using API_URL instead of VITE_API_URL
+  baseURL: import.meta.env.VITE_API_URL // Changed from API_URL to VITE_API_URL
 });
 
 api.interceptors.request.use(

@@ -2,11 +2,14 @@
 import React from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import AppRoutes from './routes/Routes';
+import { NotificationProvider } from './components/Notification';
 
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <AppRoutes />
+      <NotificationProvider>
+        <AppRoutes />
+      </NotificationProvider>
     </ThemeProvider>
   );
 };
