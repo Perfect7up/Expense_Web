@@ -1,6 +1,6 @@
-import React from "react";
-import { Button, Input, Card } from "antd";
-import { GoogleOutlined, CheckOutlined } from "@ant-design/icons";
+import React from 'react';
+import { Button, Input, Card } from 'antd';
+import { GoogleOutlined, CheckOutlined } from '@ant-design/icons';
 
 interface GoalCardProps {
   title: string;
@@ -33,20 +33,19 @@ const MainSection: React.FC = () => {
             <li className="flex items-start gap-2">
               <CheckOutlined className="text-2xl mt-1" />
               <span>
-                All inclusive. Manage expenses, track receipts, reimburse employees, create expense reports, and send invoices.
+                All inclusive. Manage expenses, track receipts, reimburse employees, create expense
+                reports, and send invoices.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <CheckOutlined className="text-2xl mt-1" />
-              <span>
-                Corporate card. Cash back on all US purchases. Fraud protection.
-              </span>
+              <span>Corporate card. Cash back on all US purchases. Fraud protection.</span>
             </li>
             <li className="flex items-start gap-2">
               <CheckOutlined className="text-2xl mt-1" />
               <span>
-                45+ integrations. Quickbooks, NetSuite, Sage Intacct, Xero,
-                Workday, Gusto, and so much more.
+                45+ integrations. Quickbooks, NetSuite, Sage Intacct, Xero, Workday, Gusto, and so
+                much more.
               </span>
             </li>
           </ul>
@@ -101,9 +100,7 @@ const MainSection: React.FC = () => {
 
         {/* Social Proof */}
         <div className="text-center mb-16">
-          <h4 className="text-xl mb-8">
-            Join 12 million+ users who trust Expense App
-          </h4>
+          <h4 className="text-xl mb-8">Join 12 million+ users who trust Expense App</h4>
           <div className="flex justify-center items-center space-x-4 size-16">
             <img
               src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_xero.svg"
@@ -151,7 +148,7 @@ const GoalCard: React.FC<GoalCardProps> = ({ title, description, icon }) => (
   <Card
     hoverable
     className="bg-emerald-100 rounded-2xl border-none cursor-pointer transition-colors hover:bg-emerald-200"
-    bodyStyle={{ padding: "2rem" }}
+    bodyStyle={{ padding: '2rem' }}
   >
     <div className="text-left">
       <span className="text-4xl mb-4 block">{icon}</span>

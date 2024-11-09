@@ -12,8 +12,8 @@ const BottomSignup = () => {
               Ready to simplify your receipt and expense management process?
             </h1>
             <p className="text-lg opacity-90">
-              Enter your email or phone number to make your company's money go further with Expense App's
-              time-saving spend management tools.
+              Enter your email or phone number to make your company's money go further with Expense
+              App's time-saving spend management tools.
             </p>
           </div>
 
@@ -25,7 +25,7 @@ const BottomSignup = () => {
                 placeholder="Enter your email or phone number"
                 size="large"
                 className="flex-grow"
-                style={{ 
+                style={{
                   height: '44px',
                   borderRadius: '8px'
                 }}
@@ -34,7 +34,7 @@ const BottomSignup = () => {
                 type="primary"
                 size="large"
                 className="bg-green-500 hover:bg-green-600 w-full sm:w-auto"
-                style={{ 
+                style={{
                   height: '44px',
                   borderRadius: '8px'
                 }}
@@ -44,14 +44,12 @@ const BottomSignup = () => {
             </div>
 
             {/* Error Message Container */}
-            <div className="h-6">
-              {/* Error message will appear here */}
-            </div>
+            <div className="h-6">{/* Error message will appear here */}</div>
 
             {/* Google Sign In */}
             <div className="flex items-center justify-center gap-4">
               <span className="text-white opacity-90">Or get started with</span>
-              <Button 
+              <Button
                 icon={<GoogleOutlined />}
                 type="default"
                 size="large"

@@ -26,29 +26,34 @@ const TrialSection = () => {
       {
         icon: '📱',
         title: '1. Add Expense',
-        description: 'Upload your first receipt with the mobile app, drag-and-drop on the web, or forward it to receipts@Expense App.com.'
+        description:
+          'Upload your first receipt with the mobile app, drag-and-drop on the web, or forward it to receipts@Expense App.com.'
       },
       {
         icon: '📄',
         title: '2. Create Report',
-        description: 'Automatically generate expense reports for reimbursement or reconciliation. Add categories, tags, and comments, then submit.'
+        description:
+          'Automatically generate expense reports for reimbursement or reconciliation. Add categories, tags, and comments, then submit.'
       },
       {
         icon: '💸',
         title: '3. Get Reimbursed',
-        description: 'Once approved, get reimbursed directly to your bank account in as little as one business day.'
+        description:
+          'Once approved, get reimbursed directly to your bank account in as little as one business day.'
       }
     ],
     owners: [
       {
         icon: '📋',
         title: '1. Set Expense Rules',
-        description: 'Set category limits and/or expense rules. Let employees submit expenses by scanning receipts or entering costs manually.'
+        description:
+          'Set category limits and/or expense rules. Let employees submit expenses by scanning receipts or entering costs manually.'
       },
       {
         icon: '✅',
         title: '2. Approve Reports',
-        description: 'Review expense reports in one place, collect missing information directly, and approve expenses with a single click.'
+        description:
+          'Review expense reports in one place, collect missing information directly, and approve expenses with a single click.'
       },
       {
         icon: '🏦',
@@ -60,17 +65,20 @@ const TrialSection = () => {
       {
         icon: '📨',
         title: '1. Receive Expenses',
-        description: 'Set category limits and/or expense rules. Let employees submit expenses by scanning receipts or entering costs manually.'
+        description:
+          'Set category limits and/or expense rules. Let employees submit expenses by scanning receipts or entering costs manually.'
       },
       {
         icon: '✅',
         title: '2. Approve Reports',
-        description: 'Review expense reports in one place, collect missing information directly, and approve expenses with a single click.'
+        description:
+          'Review expense reports in one place, collect missing information directly, and approve expenses with a single click.'
       },
       {
         icon: '💻',
         title: '3. Export to Accounting Software',
-        description: 'Spend 75% less time on expenses by reconciling expense data and automatically exporting entries into QuickBooks, NetSuite, Xero, and more.'
+        description:
+          'Spend 75% less time on expenses by reconciling expense data and automatically exporting entries into QuickBooks, NetSuite, Xero, and more.'
       }
     ]
   };
@@ -87,9 +95,10 @@ const TrialSection = () => {
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`px-6 py-2 rounded-full text-sm font-medium transition-colors
-              ${activeTab === tab.id
-                ? 'bg-gray-100 text-gray-900'
-                : 'text-gray-600 hover:bg-gray-50'
+              ${
+                activeTab === tab.id
+                  ? 'bg-gray-100 text-gray-900'
+                  : 'text-gray-600 hover:bg-gray-50'
               }`}
           >
             {tab.label}
@@ -104,12 +113,8 @@ const TrialSection = () => {
             className="bg-gray-50 p-6 rounded-lg text-center transition-all duration-300 hover:shadow-lg"
           >
             <div className="text-4xl mb-4">{step.icon}</div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">
-              {step.title}
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              {step.description}
-            </p>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
+            <p className="text-gray-600 leading-relaxed">{step.description}</p>
           </div>
         ))}
       </div>

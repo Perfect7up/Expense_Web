@@ -6,7 +6,7 @@ import AppRoutes from './routes/Routes';
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-        <AppRoutes />
+      <AppRoutes />
     </ThemeProvider>
   );
 };

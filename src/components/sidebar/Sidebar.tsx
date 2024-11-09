@@ -17,14 +17,14 @@ const Sidebar: React.FC = () => {
   return (
     <div className="p-4 bg-primary text-textPrimary h-screen">
       <Button onClick={toggleTheme} className="mb-6">
-        Switch to {theme === 'dark' ? 'Light' : 'Dark'} Theme
+        Switch to {theme === 'light' ? 'Light' : 'Dark'} Theme
       </Button>
       <nav className="w-6 fixed top-12 left-0 flex flex-col p-5 bg-secondary h-full">
         <div className="">
           <ul>
             <li className="mb-4">
-              <Link to="/" className="p-2 rounded-xl flex items-center">
-                <HomeOutlined className="mr-2" /> Home
+              <Link to="/dashboard" className="p-2 rounded-xl flex items-center">
+                <HomeOutlined className="mr-2" /> Dashboard
               </Link>
             </li>
             <li className="mb-4">

@@ -1,5 +1,5 @@
 // WebsiteLayout.tsx
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
 interface WebsiteLayoutProps {
   children: ReactNode;
