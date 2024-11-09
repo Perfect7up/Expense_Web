@@ -10,14 +10,14 @@ interface GoalCardProps {
 
 const MainSection: React.FC = () => {
   return (
-    <div className="bg-emerald-500 min-h-screen text-white font-sans">
+    <div className="bg-emerald-500 text-white font-sans">
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-8 pt-6">
+      <div className="max-w-screen-xl w-11/12 m-auto">
         <header className="flex justify-between items-center mb-16">
-          <h1 className="text-4xl font-bold">Expensify</h1>
+          <h1 className="text-4xl font-bold mt-5">Expense App</h1>
           <Button
             type="default"
-            className="bg-emerald-600 text-white hover:bg-emerald-700 border-none rounded-full h-auto px-6 py-2"
+            className="bg-emerald-600 text-white hover:bg-emerald-700 border-none rounded-full h-auto px-6 py-2 mt-5"
           >
             Sign In
           </Button>
@@ -33,8 +33,7 @@ const MainSection: React.FC = () => {
             <li className="flex items-start gap-2">
               <CheckOutlined className="text-2xl mt-1" />
               <span>
-                All inclusive. Manage expenses, track receipts, reimburse
-                employees, create expense reports, and send invoices.
+                All inclusive. Manage expenses, track receipts, reimburse employees, create expense reports, and send invoices.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -75,7 +74,7 @@ const MainSection: React.FC = () => {
         <div className="mb-24">
           <div className="flex gap-4 mb-4">
             <Input
-              placeholder="Enter your email or phone number"
+              placeholder="Enter your email"
               size="large"
               className="bg-white text-black rounded-md py-6 text-lg w-96"
             />
@@ -103,41 +102,41 @@ const MainSection: React.FC = () => {
         {/* Social Proof */}
         <div className="text-center mb-16">
           <h4 className="text-xl mb-8">
-            Join 12 million+ users who trust Expensify
+            Join 12 million+ users who trust Expense App
           </h4>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-center items-center space-x-4 size-16">
             <img
-              src="/api/placeholder/120/40"
+              src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_xero.svg"
               alt="Xero"
               className="opacity-90"
             />
             <img
-              src="/api/placeholder/120/40"
+              src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_tribeca.svg"
               alt="Tribeca Film Festival"
               className="opacity-90"
             />
             <img
-              src="/api/placeholder/120/40"
+              src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_warby.svg"
               alt="Warby Parker"
               className="opacity-90"
             />
             <img
-              src="/api/placeholder/120/40"
+              src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_swatch.svg"
               alt="Swatch Group"
               className="opacity-90"
             />
             <img
-              src="/api/placeholder/120/40"
+              src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_pinterest.svg"
               alt="Pinterest"
               className="opacity-90"
             />
             <img
-              src="/api/placeholder/120/40"
+              src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_uk.svg"
               alt="University of Kentucky"
               className="opacity-90"
             />
             <img
-              src="/api/placeholder/120/40"
+              src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_github.svg"
               alt="GitHub"
               className="opacity-90"
             />
