@@ -14,11 +14,11 @@ interface SignupData {
 }
 
 export const login = (credentials: Credentials) => {
-  return api.post('auth/login', credentials); // Fixed endpoint
+  return api.post('auth/login', credentials);
 };
 
 export const me = () => {
-  return api.get('auth/me'); // Changed to GET and fixed endpoint
+  return api.get('auth/me');
 };
 
 export const signup = (signupData: SignupData) => {

@@ -11,7 +11,7 @@ import {
   FaTimes
 } from 'react-icons/fa';
 
-const Expense: React.FC = () => {
+const Ledgers: React.FC = () => {
   return (
     <div className="py-5 px-10">
       <div className="flex-grow ml-64 py-5 rounded-2xl bg-black px-10">
@@ -174,4 +174,4 @@ const Expense: React.FC = () => {
   );
 };
 
-export default Expense;
+export default Ledgers;

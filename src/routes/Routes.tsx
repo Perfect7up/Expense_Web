@@ -3,14 +3,13 @@ import WebsiteLayout from '../website/WebsiteLayout';
 import WebsiteHome from '../website/pages/WebsiteHome';
 import DashboardLayout from '../layout/DashboardLayout';
 import ProtectedRoute from './ProtectedRoute';
-import Home from '../pages/home/Home';
-import Expense from '../pages/expense/Expense';
-import Trips from '../pages/trips/Trips';
-import Approvals from '../pages/approvals/Approvals';
-import NewExpense from '../pages/expense/Expense';
-import Newtrip from '../pages/trips/component/Newtrip';
+import Dashboard from '../pages/dashboard/Dashboard';
+import Transactions from '../pages/transactions/Transactions';
+import Categories from '../pages/categories/Categories';
+
 import Login from '../pages/auth/login';
 import Signup from '../pages/auth/signup';
+import Ledgers from '../pages/approvals/Ledgers';
 
 function AppRoutes() {
   return (
@@ -24,53 +23,45 @@ function AppRoutes() {
             </WebsiteLayout>
           }
         />
-        <Route path="/auth/login" element={<ProtectedRoute element={<Login />} />} />
-        <Route path="/auth/gettingstarted" element={<ProtectedRoute element={<Signup />} />} />
+        <Route path="/sign-in" element={<ProtectedRoute element={<Login />} />} />
+        <Route path="/sign-up" element={<ProtectedRoute element={<Signup />} />} />
         <Route
           path="/dashboard"
           element={
             <DashboardLayout>
-              <ProtectedRoute element={<Home />} />
+              <ProtectedRoute element={<Dashboard />} />
             </DashboardLayout>
           }
         />
         <Route
-          path="/expense"
+          path="/transactions"
           element={
             <DashboardLayout>
-              <ProtectedRoute element={<Expense />} />
+              <ProtectedRoute element={<Transactions />} />
             </DashboardLayout>
           }
         />
         <Route
-          path="/trips"
+          path="/categories"
           element={
             <DashboardLayout>
-              <ProtectedRoute element={<Trips />} />
+              <ProtectedRoute element={<Categories />} />
             </DashboardLayout>
           }
         />
         <Route
-          path="/approvals"
+          path="/ledgers"
           element={
             <DashboardLayout>
-              <ProtectedRoute element={<Approvals />} />
+              <ProtectedRoute element={<Ledgers />} />
             </DashboardLayout>
           }
         />
         <Route
-          path="/expense/newexpense"
+          path="/setting"
           element={
             <DashboardLayout>
-              <ProtectedRoute element={<NewExpense />} />
-            </DashboardLayout>
-          }
-        />
-        <Route
-          path="/trips/newtrip"
-          element={
-            <DashboardLayout>
-              <ProtectedRoute element={<Newtrip />} />
+              <ProtectedRoute element={<Ledgers />} />
             </DashboardLayout>
           }
         />

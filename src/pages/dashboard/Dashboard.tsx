@@ -5,7 +5,7 @@ import QuickAccessLinks from './components/QuickAccessLinks';
 import TeamSpendingChart from './components/TeamSpendingChart';
 import DailyExpenseChart from './components/DailyExpenseChart';
 
-const Home: React.FC = () => (
+const Dashboard: React.FC = () => (
   <div className="flex flex-col items-center justify-center bg-primary text-textPrimary">
     <div className="flex-grow ml-2 py-2 px-2 rounded-2xl bg-secondary">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -39,4 +39,4 @@ const Home: React.FC = () => (
   </div>
 );
 
-export default Home;
+export default Dashboard;
