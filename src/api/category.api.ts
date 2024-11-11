@@ -1,4 +1,3 @@
-// category.api.ts
 import api from '.';
 
 interface category {

@@ -1,194 +1,67 @@
-// Expense.tsx
 import React from 'react';
-import { Tag } from 'antd';
-import { PlusOutlined, FilterFilled, MenuOutlined, EllipsisOutlined } from '@ant-design/icons';
-
-import {
-  FaMoneyBillWave,
-  FaStore,
-  FaCalendarAlt,
-  FaCheckCircle,
-  FaUtensils,
-  FaShoppingCart,
-  FaInfoCircle,
-  FaNewspaper,
-  FaPlane,
-  FaGlassCheers,
-  FaHotel
-} from 'react-icons/fa';
 import DataTable from '../../components/DataTable';
+import transactionApi from '../../api/transaction.api';
+import { useQuery } from '@tanstack/react-query';
 
-interface ExpenseData {
+interface TransactionData {
   key: string;
-  details: JSX.Element;
-  merchant: string;
+  id: number;
+  categoryType: string;
+  categoryName: string;
   amount: string;
-  reportDate: string;
-  status: string;
+  date: string;
 }
 
 const columns = [
   {
-    title: (
-      <>
-        <FaInfoCircle className="inline-block mr-1" /> Details
-      </>
-    ),
-    dataIndex: 'details',
-    key: 'details'
+    title: 'ID',
+    dataIndex: 'id',
+    key: 'id'
   },
   {
-    title: (
-      <>
-        <FaStore className="inline-block mr-1" /> Merchant
-      </>
-    ),
-    dataIndex: 'merchant',
-    key: 'merchant'
+    title: 'Category Type',
+    dataIndex: 'categoryType',
+    key: 'categoryType'
   },
   {
-    title: (
-      <>
-        <FaMoneyBillWave className="inline-block mr-1" /> Amount
-      </>
-    ),
+    title: 'Category Name',
+    dataIndex: 'categoryName',
+    key: 'categoryName'
+  },
+  {
+    title: 'Amount',
     dataIndex: 'amount',
     key: 'amount'
   },
   {
-    title: (
-      <>
-        <FaCalendarAlt className="inline-block mr-1" /> Report Date
-      </>
-    ),
-    dataIndex: 'reportDate',
-    key: 'reportDate'
-  },
-  {
-    title: (
-      <>
-        <FaCheckCircle className="inline-block mr-1" /> Status
-      </>
-    ),
-    dataIndex: 'status',
-    key: 'status',
-    render: (status: string) => (
-      <Tag color={status === 'Submitted' ? 'blue' : 'volcano'}>{status}</Tag>
-    )
-  }
-];
-
-const data: ExpenseData[] = [
-  {
-    key: '1',
-    details: (
-      <>
-        <FaUtensils className="mr-2" /> Food Catering
-      </>
-    ),
-    merchant: 'McFood',
-    amount: '€250.00',
-    reportDate: '20/07/2022',
-    status: 'Not Submitted'
-  },
-  {
-    key: '2',
-    details: (
-      <>
-        <FaShoppingCart className="mr-2" /> Shopping
-      </>
-    ),
-    merchant: 'Mart',
-    amount: '€150.00',
-    reportDate: '4/07/2022',
-    status: 'Not Submitted'
-  },
-  {
-    key: '3',
-    details: (
-      <>
-        <FaUtensils className="mr-2" /> Business Lunch
-      </>
-    ),
-    merchant: 'Restaurant',
-    amount: '€70.00',
-    reportDate: '3/07/2022',
-    status: 'Not Submitted'
-  },
-  {
-    key: '4',
-    details: (
-      <>
-        <FaPlane className="mr-2" /> Travel Expense
-      </>
-    ),
-    merchant: 'Airlines',
-    amount: '€450.25',
-    reportDate: '29/06/2022',
-    status: 'Submitted'
-  },
-  {
-    key: '5',
-    details: (
-      <>
-        <FaGlassCheers className="mr-2" /> Client Dinner
-      </>
-    ),
-    merchant: 'Bistro',
-    amount: '€120.00',
-    reportDate: '15/06/2022',
-    status: 'Not Submitted'
-  },
-  {
-    key: '6',
-    details: (
-      <>
-        <FaHotel className="mr-2" /> Accommodations
-      </>
-    ),
-    merchant: 'Hotel',
-    amount: '€275.75',
-    reportDate: '30/05/2022',
-    status: 'Submitted'
-  },
-  {
-    key: '7',
-    details: (
-      <>
-        <FaNewspaper className="mr-2" /> News Subscription
-      </>
-    ),
-    merchant: 'NewsTimes',
-    amount: '€275.75',
-    reportDate: '30/05/2022',
-    status: 'Not Submitted'
+    title: 'Date',
+    dataIndex: 'date',
+    key: 'date'
   }
 ];
 
 const Transactions: React.FC = () => {
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await
-  //   } catch (error) {
+  const fetchData = async () => {
+    const response = await transactionApi.list();
+    return response.data.map((item: any) => ({
+      key: item.id.toString(),
+      id: item.id,
+      categoryType: `${item.categoryType}`, // Replace with actual logic if available
+      categoryName: `${item.categoryName}`, // Replace with actual category name if available
+      amount: `€${(item.amount / 100).toFixed(2)}`, // Assuming amount is in cents
+      date: new Date(item.date * 1000).toLocaleDateString() // Convert Unix timestamp to readable date
+    }));
+  };
 
-  //   }
-  // }
-
-  const buttons = [
-    <span key="add-expense">
-      <PlusOutlined className="text-sm" />
-      New Transaction
-    </span>,
-    <FilterFilled key="filter" />,
-    <MenuOutlined key="menu" />,
-    <EllipsisOutlined key="more-options" />
-  ];
+  const { data = [], refetch } = useQuery({
+    queryKey: ['transactionList'],
+    queryFn: fetchData
+  });
 
   return (
     <div className="bg-primary text-textPrimary">
       <DataTable
         tableName="Transaction"
-        buttons={buttons}
         columns={columns}
         data={data}
         pageSize={5}

@@ -23,12 +23,13 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     if (errors) {
+      console.log("Errors :", errors)
       if (Array.isArray(errors)) {
         errors.forEach((err: { message: string }) => {
-          showMessage('error', err.message || 'Login failed. Please try again.');
+          showMessage('error', err.message);
         });
       } else {
-        showMessage('error', 'Login failed. Please try again.');
+        showMessage('error', errors.message || 'Login failed. Please try again.');
       }
     }
   }, [errors]);
@@ -136,7 +137,7 @@ const Login: React.FC = () => {
                 type="primary"
                 htmlType="submit"
                 className="w-full"
-                loading={status === 'loading'} // Show loading state on button
+                loading={status === 'loading'}
               >
                 Log in
               </Button>

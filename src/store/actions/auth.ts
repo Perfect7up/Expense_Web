@@ -47,8 +47,8 @@ interface AuthState {
 
 // Initialize the initial state of the auth slice
 const initialState: AuthState = {
-  token: getUserToken(), // Initialize from localStorage if available
-  user: getStoredUser(), // Initialize from localStorage if available
+  token: getUserToken(),
+  user: getStoredUser(),
   status: 'idle',
   errors: null
 };
@@ -80,19 +80,18 @@ export const signupAsync = createAsyncThunk<AuthResponse, SignupPayload, { rejec
 );
 
 // Async thunk for logout
-export const logoutAsync = createAsyncThunk<void, void, { rejectValue: string }>(
+export const logoutAsync = createAsyncThunk<string, void, { rejectValue: string }>(
   'logout',
   async (_, { rejectWithValue }) => {
     try {
       const response = await authApi.logout();
-      return response.data;
+      return response.data.message;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.errors || error.message);
     }
   }
 );
 
-// Define the auth slice with typed reducers and extra reducers
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -102,15 +101,15 @@ export const authSlice = createSlice({
       state.token = token.token;
       state.user = user;
       state.errors = null;
-      setUserToken(token.token); // Persist to localStorage
-      setStoredUser(user); // Persist to localStorage
+      setUserToken(token.token);
+      setStoredUser(user);
     },
     logout: (state) => {
       state.user = null;
       state.token = null;
       state.errors = null;
       state.status = 'idle';
-      removeLocalData(); // Clear localStorage
+      removeLocalData();
     }
   },
   extraReducers: (builder) => {
@@ -122,8 +121,8 @@ export const authSlice = createSlice({
         state.status = 'succeed';
         state.user = action.payload.user;
         state.token = action.payload.token.token;
-        setUserToken(action.payload.token.token); // Persist token
-        setStoredUser(action.payload.user); // Persist user
+        setUserToken(action.payload.token.token);
+        setStoredUser(action.payload.user);
       })
       .addCase(loginAsync.rejected, (state, action) => {
         state.status = 'failed';
@@ -138,8 +137,8 @@ export const authSlice = createSlice({
         state.status = 'succeed';
         state.user = action.payload.user;
         state.token = action.payload.token.token;
-        setUserToken(action.payload.token.token); // Persist token
-        setStoredUser(action.payload.user); // Persist user
+        setUserToken(action.payload.token.token);
+        setStoredUser(action.payload.user);
       })
       .addCase(signupAsync.rejected, (state, action) => {
         state.status = 'failed';
@@ -154,7 +153,12 @@ export const authSlice = createSlice({
         state.status = 'succeed';
         state.user = null;
         state.token = null;
-        removeLocalData(); // Clear localStorage on logout
+        removeLocalData();
+        // Call the `logout` reducer function to reset the state
+        state = authSlice.reducer(state, {
+          type: 'auth/logout',
+          payload: undefined
+        });
       })
       .addCase(logoutAsync.rejected, (state, action) => {
         state.status = 'failed';

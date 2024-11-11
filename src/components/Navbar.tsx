@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Menu } from 'lucide-react';
+import { useDispatch } from 'react-redux';
+import { logoutAsync } from '../store/actions/auth';
+import { Button, message } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('dashboard');
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const showMessage = (type: 'success' | 'error', content: string) => {
+    messageApi[type](content);
+  };
+
   const menuItems = [
-    { id: 'dashboard', icon: '📊', label: 'Dashboard' },
-    { id: 'transactions', icon: '💳', label: 'Transactions' },
-    { id: 'categories', icon: '🏷️', label: 'Categories' },
-    { id: 'ledger', icon: '📒', label: 'Ledger' }
+    { id: 'dashboard', icon: '📊', label: 'Dashboard', to: '/dashboard' },
+    { id: 'transactions', icon: '💳', label: 'Transactions', to: '/transactions' },
+    { id: 'categories', icon: '🏷️', label: 'Categories', to: '/categories' },
+    { id: 'ledger', icon: '📒', label: 'Ledger', to: '/ledger' }
   ];
 
   const userDetail = {
@@ -18,7 +29,26 @@ const Navbar = () => {
     avatarUrl: "/api/placeholder/40/40"
   };
 
+  const handleLogout = async () => {
+    try {
+      const response = await dispatch(logoutAsync() as any)
+      if (logoutAsync.fulfilled.match(response)) {
+        showMessage('success', 'Logout successful! Redirecting to Website...');
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
+      } else if (logoutAsync.rejected.match(response)) {
+        showMessage('error', 'Error while loging out. Please try again.');
+        console.log("logout error :", response)
+      }
+    } catch (error) {
+      console.error('An unexpected error occurred:', error);
+    }
+  }
+
   return (
+    <>
+    {contextHolder}
     <nav className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
@@ -42,8 +72,10 @@ const Navbar = () => {
                 }`}
               >
                 <span className="flex items-center space-x-2">
+                  <Link to={item.to}>
                   <span>{item.icon}</span>
                   <span>{item.label}</span>
+                  </Link>
                 </span>
               </button>
             ))}
@@ -73,9 +105,9 @@ const Navbar = () => {
                 <div className="py-1">
                   <a href="#profile" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Profile</a>
                   <a href="#settings" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Settings</a>
-                  <button className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                    Sign out
-                  </button>
+                  <Button className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <Link to='/' onClick={handleLogout}>Sign out</Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -118,6 +150,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </>
   );
 };
 

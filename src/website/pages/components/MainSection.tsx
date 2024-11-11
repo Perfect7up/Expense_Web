@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Input, Card } from 'antd';
 import { GoogleOutlined, CheckOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 interface GoalCardProps {
   title: string;
@@ -19,7 +20,7 @@ const MainSection: React.FC = () => {
             type="default"
             className="bg-emerald-600 text-white hover:bg-emerald-700 border-none rounded-full h-auto px-6 py-2 mt-5"
           >
-            Sign In
+            <Link to='/sign-in'>Sign In</Link>
           </Button>
         </header>
 
