@@ -1,7 +1,8 @@
-// TwoColumnList.tsx
 import React from 'react';
-import { Card, List, Button, Space } from 'antd';
+import { Card, List, Button, Space, Typography } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+
+const { Text, Title } = Typography;
 
 interface CardContent {
   id: number;
@@ -29,7 +30,7 @@ const TwoColumnList: React.FC<TwoColumnListProps> = ({
   type1ButtonsEnabled = false,
   type2ButtonsEnabled = false,
   onEdit,
-  onDelete
+  onDelete,
 }) => {
   const renderContentItem = (content: CardContent, buttonsEnabled: boolean) => (
     <div
@@ -38,20 +39,19 @@ const TwoColumnList: React.FC<TwoColumnListProps> = ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '8px'
+        padding: '8px 0',
+        borderBottom: '1px solid #f0f0f0',
       }}
     >
-      <span>
-        {content.id}: {content.content}
-      </span>
+      <Text style={{ color: '#595959' }}>{content.id}: {content.content}</Text>
       {buttonsEnabled && !content.buttonsDisabled && (
-        <Space>
+        <Space size="middle">
           {onEdit && (
             <Button
               type="link"
               icon={<EditOutlined />}
               onClick={() => onEdit(content.id, content.content)}
-              style={{ padding: 0 }}
+              style={{ color: '#1890ff' }}
             />
           )}
           {onDelete && (
@@ -59,7 +59,7 @@ const TwoColumnList: React.FC<TwoColumnListProps> = ({
               type="link"
               icon={<DeleteOutlined />}
               onClick={() => onDelete(content.id, content.content)}
-              style={{ padding: 0 }}
+              style={{ color: '#ff4d4f' }}
             />
           )}
         </Space>
@@ -73,7 +73,16 @@ const TwoColumnList: React.FC<TwoColumnListProps> = ({
       dataSource={data}
       renderItem={(item) => (
         <List.Item>
-          <Card title={item.title}>
+          <Card
+            title={<Title level={4} style={{ margin: 0 }}>{item.title}</Title>}
+            bordered
+            hoverable
+            style={{
+              borderRadius: '8px',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            }}
+            bodyStyle={{ padding: '16px' }}
+          >
             {item.contents.map((content) => renderContentItem(content, buttonsEnabled))}
           </Card>
         </List.Item>
