@@ -20,7 +20,7 @@ const MainSection: React.FC = () => {
             type="default"
             className="bg-emerald-600 text-white hover:bg-emerald-700 border-none rounded-full h-auto px-6 py-2 mt-5"
           >
-            <Link to='/sign-in'>Sign In</Link>
+            <Link to="/sign-in">Sign In</Link>
           </Button>
         </header>
 

@@ -1,23 +1,28 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Modal, Input, Select, Form } from 'antd';
+import { Modal, Input, Select, Form, DatePicker } from 'antd';
 import type { DraggableData, DraggableEvent } from 'react-draggable';
 import Draggable from 'react-draggable';
 
 interface FormField {
   name: string;
   label: string;
-  type: 'input' | 'select';
+  type: 'input' | 'select' | 'date';
   options?: { label: string; value: string | number }[];
+  format?: 'MM-DD-YYYY' | 'DD/MM/YYYY';
+}
+
+interface FormValues {
+  [key: string]: string | number | boolean;
 }
 
 interface DraggableModalProps {
   title: React.ReactNode;
   description?: React.ReactNode;
   open: boolean;
-  onOk: (values: Record<string, any>) => void;
+  onOk: (values: FormValues) => void;
   onCancel: () => void;
   formFields: FormField[];
-  initialValues?: Record<string, any>; // Add initialValues prop
+  initialValues?: FormValues;
   children?: React.ReactNode;
 }
 
@@ -28,7 +33,7 @@ const DraggableModal: React.FC<DraggableModalProps> = ({
   onOk,
   onCancel,
   formFields,
-  initialValues = {}, // Default to an empty object if not provided
+  initialValues = {},
   children
 }) => {
   const [disabled, setDisabled] = useState(true);
@@ -52,9 +57,9 @@ const DraggableModal: React.FC<DraggableModalProps> = ({
 
   useEffect(() => {
     if (open) {
-      form.setFieldsValue(initialValues); // Set form fields when modal opens
+      form.setFieldsValue(initialValues);
     } else {
-      form.resetFields(); // Reset form when modal closes
+      form.resetFields();
     }
   }, [open, initialValues, form]);
 
@@ -103,6 +108,8 @@ const DraggableModal: React.FC<DraggableModalProps> = ({
               <Input />
             ) : field.type === 'select' && field.options ? (
               <Select options={field.options} />
+            ) : field.type === 'date' && field.format ? (
+              <DatePicker format={field.format} />
             ) : null}
           </Form.Item>
         ))}

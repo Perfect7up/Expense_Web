@@ -30,7 +30,7 @@ const TwoColumnList: React.FC<TwoColumnListProps> = ({
   type1ButtonsEnabled = false,
   type2ButtonsEnabled = false,
   onEdit,
-  onDelete,
+  onDelete
 }) => {
   const renderContentItem = (content: CardContent, buttonsEnabled: boolean) => (
     <div
@@ -40,10 +40,12 @@ const TwoColumnList: React.FC<TwoColumnListProps> = ({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '8px 0',
-        borderBottom: '1px solid #f0f0f0',
+        borderBottom: '1px solid #f0f0f0'
       }}
     >
-      <Text style={{ color: '#595959' }}>{content.id}: {content.content}</Text>
+      <Text style={{ color: '#595959' }}>
+        {content.id}: {content.content}
+      </Text>
       {buttonsEnabled && !content.buttonsDisabled && (
         <Space size="middle">
           {onEdit && (
@@ -74,12 +76,16 @@ const TwoColumnList: React.FC<TwoColumnListProps> = ({
       renderItem={(item) => (
         <List.Item>
           <Card
-            title={<Title level={4} style={{ margin: 0 }}>{item.title}</Title>}
+            title={
+              <Title level={4} style={{ margin: 0 }}>
+                {item.title}
+              </Title>
+            }
             bordered
             hoverable
             style={{
               borderRadius: '8px',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
             }}
             bodyStyle={{ padding: '16px' }}
           >

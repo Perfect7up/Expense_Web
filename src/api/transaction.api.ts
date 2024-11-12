@@ -1,21 +1,22 @@
-import api from '.'
+import api from '.';
 
 interface createPayload {
-    amount: number,
-    category_id: number,
-    date: string
+  amount: number;
+  category_id: number;
+  date: string;
 }
 
 export const create = (payload: createPayload) => {
-    return api.post('transaction', payload)
-}
+  console.log('Create payload:', payload);
+  return api.post('transaction', payload);
+};
 
 export const list = () => {
-    return api.get('transaction')
-}
+  return api.get('transaction');
+};
 
 export const destory = (transactionId: number) => {
-    return api.post('transaction', transactionId)
-}
+  return api.post('transaction', transactionId);
+};
 
-export default {create, list, destory}
+export default { create, list, destory };

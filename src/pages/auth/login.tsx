@@ -23,7 +23,7 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     if (errors) {
-      console.log("Errors :", errors)
+      console.log('Errors :', errors);
       if (Array.isArray(errors)) {
         errors.forEach((err: { message: string }) => {
           showMessage('error', err.message);

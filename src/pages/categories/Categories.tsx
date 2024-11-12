@@ -55,13 +55,10 @@ const Categories: React.FC = () => {
   const handleOk = async (values: Record<string, any>) => {
     try {
       if (editingCategory) {
-        // Update existing category
-        console.log('Edit Values :', values);
         const response = await categoryApi.update(editingCategory.id, {
           name: values.name,
           type: values.type
         });
-        console.log('Edit response :', response);
         if (response.status >= 200 && response.status < 300) {
           setStatusMessage({
             type: 'success',
@@ -99,12 +96,7 @@ const Categories: React.FC = () => {
     }
   };
 
-  const {
-    data: categories = [],
-    refetch,
-    isError,
-    isLoading
-  } = useQuery<Category[]>({
+  const { data: categories = [], refetch } = useQuery<Category[]>({
     queryKey: ['categoryList'],
     queryFn: fetchCategories
   });
@@ -138,11 +130,11 @@ const Categories: React.FC = () => {
     }
   ];
 
-  const handleEdit = (id: number, content: string) => {
+  const handleEdit = (id: number) => {
     const category = categories.find((cat) => cat.id === id);
     if (category) {
-      setEditingCategory(category); // Set the category to be edited
-      setOpen(true); // Open modal in edit mode
+      setEditingCategory(category);
+      setOpen(true);
     }
   };
 
