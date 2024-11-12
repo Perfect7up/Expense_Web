@@ -4,6 +4,7 @@ import transactionApi from '../../api/transaction.api';
 import { useQuery } from '@tanstack/react-query';
 import { message } from 'antd';
 import DraggableModal from '../../components/DragableModal';
+import categoryApi from '../../api/category.api';
 
 interface TransactionData {
   key: string;
@@ -12,6 +13,12 @@ interface TransactionData {
   categoryName: string;
   amount: number;
   date: number;
+}
+
+interface Category {
+  id: number;
+  type: string;
+  name: string;
 }
 
 interface FormField {
@@ -56,21 +63,6 @@ const columns = [
   }
 ];
 
-const formFields: FormField[] = [
-  { name: 'amount', label: 'Amount', type: 'input' },
-  {
-    name: 'categoryId',
-    label: 'Category Id',
-    type: 'input'
-  },
-  {
-    name: 'date',
-    label: 'Date',
-    type: 'date',
-    format: 'MM-DD-YYYY'
-  }
-];
-
 const Transactions: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
@@ -106,20 +98,33 @@ const Transactions: React.FC = () => {
     }));
   };
 
+  const fetchCategories = async (): Promise<Category[]> => {
+    try {
+      const response = await categoryApi.list();
+      return response.data;
+    } catch (error) {
+      console.log('Error:', error);
+      return [];
+    }
+  };
+
+  const { data: categoriesList = [] } = useQuery<Category[]>({
+    queryKey: ['categoryList'],
+    queryFn: fetchCategories
+  });
+
   const { data = [], refetch } = useQuery({
     queryKey: ['transactionList'],
     queryFn: fetchData
   });
 
   const handleTransaction = async (values: createTransaction) => {
-    console.log('Values :', values);
     try {
       const response = await transactionApi.create({
         amount: values.amount,
         category_id: values.categoryId,
-        date: values.date
+        date: new Date(values.date).toLocaleDateString()
       });
-      console.log('Response :', response);
       if (response.status >= 200 || response.status <= 299) {
         setOpen(false);
         refetch();
@@ -134,6 +139,22 @@ const Transactions: React.FC = () => {
     }
   };
 
+  const formFields: FormField[] = [
+    { name: 'amount', label: 'Amount', type: 'input' },
+    {
+      name: 'categoryId',
+      label: 'Category Id',
+      type: 'select',
+      options: categoriesList.map((category) => ({ label: category.name, value: category.id }))
+    },
+    {
+      name: 'date',
+      label: 'Date',
+      type: 'date',
+      format: 'MM-DD-YYYY'
+    }
+  ];
+
   return (
     <div>
       {contextHolder}
@@ -144,6 +165,14 @@ const Transactions: React.FC = () => {
           columns={columns}
           data={data}
           pageSize={5}
+          rowButtons={[
+            {
+              label: 'Delete',
+              onClick: (record) => console.log('Deleting', record),
+              type: 'primary',
+              danger: true
+            }
+          ]}
         />
         <DraggableModal
           title={'Add Transaction'}
